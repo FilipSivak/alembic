@@ -45,6 +45,10 @@ IF (Boost_PYTHON_LIBRARY AND ALEMBIC_PYTHON_LIBRARY)
         ADD_DEFINITIONS(-Wno-unused-local-typedefs)
     ENDIF()
 
+	IF (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+		SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default")
+	ENDIF()
+
     SET(CPP_FILES
         PyAbcCoreLayer.cpp
         PyAbcGeomTypes.cpp
